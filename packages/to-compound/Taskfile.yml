@@ -1,0 +1,39 @@
+version: "3"
+
+tasks:
+    build:
+        desc: Build to-compound package
+        cmds:
+            - bun run build
+
+    typecheck:
+        desc: Typecheck to-compound package
+        cmds:
+            - bun run typecheck
+
+    test:
+        desc: Test to-compound package
+        cmds:
+            - bun run test
+
+    lint:
+        desc: Lint to-compound package
+        cmds:
+            - bun run lint
+
+    format:
+        desc: Format to-compound package
+        cmds:
+            - bun run format
+
+    format:check:
+        desc: Check formatting of to-compound package
+        cmds:
+            - bun run format:check
+
+    ci:
+        desc: Run all CI checks
+        cmds:
+            - task: typecheck
+            - task: lint
+            - task: format:check

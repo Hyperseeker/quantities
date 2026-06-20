@@ -1,52 +1,62 @@
 {
-  "name": "js-quantities",
-  "main": "./build/quantities.js",
-  "exports": {
-    ".": {
-      "import": "./build/quantities.mjs",
-      "require": "./build/quantities.js"
-    },
-    "./esm": "./build/quantities.mjs"
-  },
-  "readmeFilename": "README.md",
-  "description": "JavaScript library for quantity calculation and unit conversion",
-  "version": "1.8.0",
-  "homepage": "http://gentooboontoo.github.io/js-quantities/",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gentooboontoo/js-quantities.git"
-  },
-  "keywords": [
-    "conversion",
-    "convert",
-    "imperial",
-    "measure",
-    "measurement",
-    "metric",
-    "parse",
-    "parser",
-    "physical",
-    "quantity",
-    "quantities",
-    "temperature",
-    "unit",
-    "units"
-  ],
-  "author": "Julien Sanchez <julien.sanchez@gmail.com>",
-  "contributors": [
-    "Julien Sanchez <julien.sanchez@gmail.com>",
-    "Rage Shadowman <ralph@crc-corp.com>"
-  ],
-  "license": "MIT",
-  "scripts": {
-    "test": "jasmine-node spec/"
-  },
-  "bugs": {
-    "url": "https://github.com/gentooboontoo/js-quantities/issues"
-  },
-  "devDependencies": {
-    "eslint": "^7.15.0",
-    "jasmine": "^3.6.3",
-    "rollup": "^2.34.2"
-  }
+	"name": "@quantities/monorepo",
+	"version": "2.0.0",
+	"private": true,
+	"keywords": [
+		"conversion",
+		"convert",
+		"imperial",
+		"measure",
+		"measurement",
+		"metric",
+		"parse",
+		"parser",
+		"physical",
+		"quantities",
+		"quantity",
+		"temperature",
+		"unit",
+		"units"
+	],
+	"homepage": "https://github.com/Hyperseeker/quantities",
+	"bugs": {
+		"url": "https://github.com/Hyperseeker/quantities/issues"
+	},
+	"license": "MIT",
+	"author": "Steve Brand <thatfanficguy@protonmail.com>",
+	"contributors": [
+		"Steve Brand <thatfanficguy@protonmail.com>",
+		"Julien Sanchez <julien.sanchez@gmail.com>",
+		"Rage Shadowman <ralph@crc-corp.com>"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Hyperseeker/quantities.git"
+	},
+	"workspaces": [
+		"packages/*"
+	],
+	"type": "module",
+	"scripts": {
+		"build": "bun run build:core && bun run build:registry && bun run build:units && bun run build:to-compound",
+		"build:core": "cd packages/core && bun run build",
+		"build:registry": "cd packages/registry && bun run build",
+		"build:units": "cd packages/units && bun run build",
+		"build:to-compound": "cd packages/to-compound && bun run build",
+		"test": "bun test",
+		"lint": "oxlint --type-aware",
+		"format": "oxfmt",
+		"format:check": "oxfmt --check"
+	},
+	"devDependencies": {
+		"@changesets/cli": "^2.31.0",
+		"@types/bun": "^1.3.14",
+		"@typescript/native-preview": "^7.0.0-dev.20260619.1",
+		"oxfmt": "^0.55.0",
+		"oxlint": "^1.70.0",
+		"oxlint-frontier-style": "^1.1.2",
+		"oxlint-tsgolint": "^0.23.0",
+		"tinybench": "^6.0.2",
+		"typescript": "^6.0.3"
+	}
 }

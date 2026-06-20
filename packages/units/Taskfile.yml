@@ -1,0 +1,39 @@
+version: "3"
+
+tasks:
+    build:
+        desc: Build units package
+        cmds:
+            - bun run build
+
+    typecheck:
+        desc: Typecheck units package
+        cmds:
+            - bun run typecheck
+
+    test:
+        desc: Test units package
+        cmds:
+            - bun run test
+
+    lint:
+        desc: Lint units package
+        cmds:
+            - bun run lint
+
+    format:
+        desc: Format units package
+        cmds:
+            - bun run format
+
+    format:check:
+        desc: Check formatting of units package
+        cmds:
+            - bun run format:check
+
+    ci:
+        desc: Run all CI checks
+        cmds:
+            - task: typecheck
+            - task: lint
+            - task: format:check

@@ -1,0 +1,39 @@
+version: "3"
+
+tasks:
+    build:
+        desc: Build core package
+        cmds:
+            - bun run build
+
+    typecheck:
+        desc: Typecheck core package
+        cmds:
+            - bun run typecheck
+
+    test:
+        desc: Test core package
+        cmds:
+            - bun run test
+
+    lint:
+        desc: Lint core package
+        cmds:
+            - bun run lint
+
+    format:
+        desc: Format core package
+        cmds:
+            - bun run format
+
+    format:check:
+        desc: Check formatting of core package
+        cmds:
+            - bun run format:check
+
+    ci:
+        desc: Run all CI checks
+        cmds:
+            - task: typecheck
+            - task: lint
+            - task: format:check
