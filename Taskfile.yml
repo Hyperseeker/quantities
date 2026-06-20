@@ -1,0 +1,88 @@
+version: "3"
+
+includes:
+    core:
+        taskfile: ./packages/core/Taskfile.yml
+        dir: ./packages/core
+    registry:
+        taskfile: ./packages/registry/Taskfile.yml
+        dir: ./packages/registry
+    units:
+        taskfile: ./packages/units/Taskfile.yml
+        dir: ./packages/units
+    to-compound:
+        taskfile: ./packages/to-compound/Taskfile.yml
+        dir: ./packages/to-compound
+
+tasks:
+    build:
+        desc: Build all packages in dependency order
+        # * `cmds` runs sequentially
+        cmds:
+            - task: core:build
+            - task: registry:build
+            - task: units:build
+            - task: to-compound:build
+
+    typecheck:
+        desc: Typecheck all packages and their tests
+        # * `deps` runs in parallel
+        deps:
+            - core:typecheck
+            - registry:typecheck
+            - units:typecheck
+            - to-compound:typecheck
+            - typecheck:tests
+
+    typecheck:tests:
+        desc: Typecheck test files (excluded from the build)
+        # * tests are checked here, never emitted — see tsconfig.json
+        cmds:
+            - bunx tsgo --noEmit -p tsconfig.json
+
+    test:
+        desc: Run all tests
+        cmds:
+            - bun test
+
+    lint:
+        desc: Lint the codebase
+        deps:
+            - core:lint
+            - registry:lint
+            - units:lint
+            - to-compound:lint
+
+    format:
+        desc: Format the codebase
+        deps:
+            - core:format
+            - registry:format
+            - units:format
+            - to-compound:format
+
+    format:check:
+        desc: Check formatting
+        deps:
+            - core:format:check
+            - registry:format:check
+            - units:format:check
+            - to-compound:format:check
+
+    ci:
+        desc: Run all CI checks
+        deps:
+            - core:ci
+            - registry:ci
+            - units:ci
+            - to-compound:ci
+
+    change:
+        desc: "Author a changeset describing the current changes"
+        cmds:
+            - bunx changeset
+
+    version:
+        desc: "Consume changesets: bump versions and write changelogs"
+        cmds:
+            - bunx changeset version

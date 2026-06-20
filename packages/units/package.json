@@ -1,0 +1,152 @@
+{
+	"name": "@quantities/units",
+	"version": "1.0.0",
+	"description": "Uncommon and specialized unit definitions for @quantities/core",
+	"keywords": [
+		"conversion",
+		"convert",
+		"imperial",
+		"measure",
+		"measurement",
+		"metric",
+		"parse",
+		"parser",
+		"physical",
+		"quantities",
+		"quantity",
+		"temperature",
+		"unit",
+		"units"
+	],
+	"homepage": "https://github.com/Hyperseeker/quantities",
+	"bugs": {
+		"url": "https://github.com/Hyperseeker/quantities/issues"
+	},
+	"license": "MIT",
+	"author": "Steve Brand <thatfanficguy@protonmail.com>",
+	"contributors": [
+		"Steve Brand <thatfanficguy@protonmail.com>"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Hyperseeker/quantities.git"
+	},
+	"files": [
+		"dist"
+	],
+	"type": "module",
+	"sideEffects": false,
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		},
+		"./acceleration": {
+			"types": "./dist/acceleration.d.ts",
+			"default": "./dist/acceleration.js"
+		},
+		"./activity": {
+			"types": "./dist/activity.d.ts",
+			"default": "./dist/activity.js"
+		},
+		"./angle": {
+			"types": "./dist/angle.d.ts",
+			"default": "./dist/angle.js"
+		},
+		"./charge": {
+			"types": "./dist/charge.d.ts",
+			"default": "./dist/charge.js"
+		},
+		"./counting": {
+			"types": "./dist/counting.d.ts",
+			"default": "./dist/counting.js"
+		},
+		"./current": {
+			"types": "./dist/current.d.ts",
+			"default": "./dist/current.js"
+		},
+		"./energy": {
+			"types": "./dist/energy.d.ts",
+			"default": "./dist/energy.js"
+		},
+		"./force": {
+			"types": "./dist/force.d.ts",
+			"default": "./dist/force.js"
+		},
+		"./length": {
+			"types": "./dist/length.d.ts",
+			"default": "./dist/length.js"
+		},
+		"./magnetism": {
+			"types": "./dist/magnetism.d.ts",
+			"default": "./dist/magnetism.js"
+		},
+		"./mass": {
+			"types": "./dist/mass.d.ts",
+			"default": "./dist/mass.js"
+		},
+		"./molar_concentration": {
+			"types": "./dist/molar_concentration.d.ts",
+			"default": "./dist/molar_concentration.js"
+		},
+		"./power": {
+			"types": "./dist/power.d.ts",
+			"default": "./dist/power.js"
+		},
+		"./prefix": {
+			"types": "./dist/prefix.d.ts",
+			"default": "./dist/prefix.js"
+		},
+		"./prefix_only": {
+			"types": "./dist/prefix_only.d.ts",
+			"default": "./dist/prefix_only.js"
+		},
+		"./pressure": {
+			"types": "./dist/pressure.d.ts",
+			"default": "./dist/pressure.js"
+		},
+		"./radiation": {
+			"types": "./dist/radiation.d.ts",
+			"default": "./dist/radiation.js"
+		},
+		"./rate": {
+			"types": "./dist/rate.d.ts",
+			"default": "./dist/rate.js"
+		},
+		"./speed": {
+			"types": "./dist/speed.d.ts",
+			"default": "./dist/speed.js"
+		},
+		"./temperature": {
+			"types": "./dist/temperature.d.ts",
+			"default": "./dist/temperature.js"
+		},
+		"./time": {
+			"types": "./dist/time.d.ts",
+			"default": "./dist/time.js"
+		},
+		"./viscosity": {
+			"types": "./dist/viscosity.d.ts",
+			"default": "./dist/viscosity.js"
+		},
+		"./volume": {
+			"types": "./dist/volume.d.ts",
+			"default": "./dist/volume.js"
+		}
+	},
+	"scripts": {
+		"build": "tsgo -b",
+		"typecheck": "tsgo --noEmit",
+		"test": "bun test",
+		"lint": "oxlint --type-aware",
+		"format": "oxfmt",
+		"format:check": "oxfmt --check",
+		"prepublishOnly": "bun run build"
+	},
+	"devDependencies": {
+		"@quantities/registry": "^1.0.0"
+	},
+	"peerDependencies": {
+		"@quantities/core": "^2.0.0"
+	}
+}
